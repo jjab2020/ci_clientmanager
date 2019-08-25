@@ -2,7 +2,10 @@
 <head>
 	<?php
 	  //add_css(array('bootstrap.min.css'));
+  add_css(array('dataTables.bootstrap4.min.css'));
 	  echo put_headers();
+    
+    //echo put_headers();
 
 	?>
 	<title>ciclient</title>

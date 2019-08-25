@@ -9,6 +9,7 @@ $route['signup'] = 'users/signup';
 $route['check'] = 'users/checkLogin';
 $route['dashboard'] = 'dashboard/index';
 $route['client'] = 'client/index';
+$route['getclient'] = 'client/getClient';
 $route['commande'] = 'client/commande';
 $route['logout'] = 'users/logout';
 $route['(:any)']='pages/view/$1';
