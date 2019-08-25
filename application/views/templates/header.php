@@ -1,14 +1,10 @@
 <html>
 <head>
 	<?php
-	  //add_css(array('bootstrap.min.css'));
   add_css(array('dataTables.bootstrap4.min.css'));
-	  echo put_headers();
-    
-    //echo put_headers();
-
-	?>
-	<title>ciclient</title>
+  echo put_headers();
+  ?>
+  <title>ciclient</title>
 </head>
 <body>
  <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
@@ -24,13 +20,15 @@
         <a class="nav-link" href="<?php echo base_url();?>About">A propos</a>
       </li>
     </ul>
-<li class="nav-item dropdown">
-    <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">Actions</a>
-    <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
-      <a class="dropdown-item" href="<?php echo site_url('logout') ?>">Logout</a>
-      <a class="dropdown-item" href="<?php echo site_url('dashboard') ?>">Dashboard</a>
-    </div>
-  </li>
+    <li class="nav-item dropdown">
+      <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="false" aria-expanded="false">Actions</a>
+      <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; transform: translate3d(0px, 40px, 0px); top: 0px; left: 0px; will-change: transform;">
+        <a class="dropdown-item" href="<?php echo site_url('logout') ?>">Logout</a>
+        <a class="dropdown-item" href="<?php echo site_url('dashboard') ?>">Dashboard</a>
+      </div>
+    </li>
   </div>
 </nav>
+
 <div class="container-fluid">
+  

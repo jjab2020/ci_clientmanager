@@ -9,18 +9,15 @@ class Users extends CI_Controller {
 		
 		$this->load->model('UsersModel');
 
-		
-		
-		}
+	}
 
-		
 	public function userRegister()
-		{
-		  $this->load->view('templates/header');
-		  $this->load->view('users/register');
-		  $this->load->view('templates/footer');
+	{
+		$this->load->view('templates/header');
+		$this->load->view('users/register');
+		$this->load->view('templates/footer');
 
-		}	
+	}	
 	public function signup(){
 
 		$this->form_validation->set_rules("nom","Utilisateur","required");
@@ -60,10 +57,10 @@ class Users extends CI_Controller {
 	public function userLogin(){
 		if ($this->session->userdata('nom'))
 			return redirect('dashboard');
-		  
-		  $this->load->view('templates/header');
-		  $this->load->view('users/login');
-		  $this->load->view('templates/footer');
+
+		$this->load->view('templates/header');
+		$this->load->view('users/login');
+		$this->load->view('templates/footer');
 	}
 
 	public function checkLogin(){
@@ -85,9 +82,9 @@ class Users extends CI_Controller {
 			if($userExist){
 				$sessionData = [
 
-				'nom' => $userExist[0]->nom,
-				'email'=> $userExist[0]->email,
-				'motdepasse'=> $userExist[0]->motdepasse
+					'nom' => $userExist[0]->nom,
+					'email'=> $userExist[0]->email,
+					'motdepasse'=> $userExist[0]->motdepasse
 
 				];
 
@@ -96,12 +93,11 @@ class Users extends CI_Controller {
 
 			}		
 			else{
+
 				$this->session->set_flashdata('message','email ou mot de passe erroné');
 				return redirect('login');
 				
 			}	
-			
-
 		}
 		else{
 			
@@ -109,10 +105,10 @@ class Users extends CI_Controller {
 
 		}
 
-		}	
+	}	
 	function logout()	{
 		$array_items = array('nom', 'email','motdepasse');
 		$this->session->unset_userdata($array_items);
 		return redirect('login');
-		}
+	}
 }

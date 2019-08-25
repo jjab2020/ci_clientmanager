@@ -8,7 +8,7 @@
 			<div class="col-md-6">
 				<div class="alert alert dismissible alert-success">
 					<?php echo $error; ?>
-					</div>
+				</div>
 			</div>
 		</div>
 	<?php endif; ?>	

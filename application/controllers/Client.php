@@ -10,57 +10,54 @@ class Client extends CI_Controller {
 
     }
 
+    public function index()
+    {
 
-		
-	public function index()
-	{
-		
-		$this->load->view('templates/header');
-		$this->load->view('client/index');
-		$this->load->view('templates/footer');
-	}
+      $this->load->view('templates/header');
+      $this->load->view('client/index');
+      $this->load->view('templates/footer');
+  }
 
-	public function getClient(){
+  public function getClient(){
 
 		// Datatables Variables
 
-          $draw = intval($this->input->get("draw"));
-          $start = intval($this->input->get("start"));
-          $length = intval($this->input->get("length"));
+      $draw = intval($this->input->get("draw"));
+      $start = intval($this->input->get("start"));
+      $length = intval($this->input->get("length"));
 
           // get the  dataset	
-          $clients = $this->ClientsModel->get_clients($start, $length);
+      $clients = $this->ClientsModel->get_clients($start, $length);
 
-          $data = [] ;
+      $data = [] ;
 
-          foreach($clients->result() as $r) {
+      foreach($clients->result() as $r) {
 
-               $data[] = [
-                    $r->nomClient,
-                    $r->prenomClient,
-                    $r->ageClient,
-                    $r->courrielClient,
-                    $r->adresse,
-                    $r->nomVille
-                  ];
-          }
+         $data[] = [
+            $r->nomClient,
+            $r->prenomClient,
+            $r->ageClient,
+            $r->courrielClient,
+            $r->adresse,
+            $r->nomVille
+        ];
+    }
 
-          $total_client = $this->ClientsModel->get_total_clients();
+    $total_client = $this->ClientsModel->get_total_clients();
 
-          $output = [
-                 "draw" => $draw,
-                 "recordsTotal" => $total_client,
-                 "recordsFiltered" => $total_client,
-                 "data" => $data
-                 ];
+    $output = [
+       "draw" => $draw,
+       "recordsTotal" => $total_client,
+       "recordsFiltered" => $total_client,
+       "data" => $data
+   ];
 
-          echo json_encode($output);
+   echo json_encode($output);
 
-	}
+}
 
-	public function commande()
-	{
-		
-		echo "Gestion commande ici";
-	}
+public function commande()
+{
+  echo "Gestion commande ici";
+}
 }
