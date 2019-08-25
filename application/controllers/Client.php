@@ -4,8 +4,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 class Client extends CI_Controller {
 
 	public function __construct() {
+
         Parent::__construct();
         $this->load->model("ClientsModel");
+
     }
 
 
@@ -14,48 +16,51 @@ class Client extends CI_Controller {
 	{
 		
 		$this->load->view('templates/header');
-		$this->load->view('client/index', array());
+		$this->load->view('client/index');
 		$this->load->view('templates/footer');
 	}
 
 	public function getClient(){
 
 		// Datatables Variables
+
           $draw = intval($this->input->get("draw"));
           $start = intval($this->input->get("start"));
           $length = intval($this->input->get("length"));
 
+          // get the  dataset	
+          $clients = $this->ClientsModel->get_clients($start, $length);
 
-          $clients = $this->ClientsModel->get_clients();
-
-          $data = array();
+          $data = [] ;
 
           foreach($clients->result() as $r) {
 
-               $data[] = array(
+               $data[] = [
                     $r->nomClient,
                     $r->prenomClient,
                     $r->ageClient,
                     $r->courrielClient,
                     $r->adresse,
                     $r->nomVille
-               );
+                  ];
           }
 
-          $output = array(
+          $total_client = $this->ClientsModel->get_total_clients();
+
+          $output = [
                  "draw" => $draw,
-                 "recordsTotal" => $clients->num_rows(),
-                 "recordsFiltered" => $clients->num_rows(),
+                 "recordsTotal" => $total_client,
+                 "recordsFiltered" => $total_client,
                  "data" => $data
-            );
+                 ];
+
           echo json_encode($output);
-          exit();
 
 	}
 
 	public function commande()
 	{
 		
-		echo "commande ici";
+		echo "Gestion commande ici";
 	}
 }

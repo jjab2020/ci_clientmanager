@@ -8,7 +8,7 @@
 
     <h1>Liste des clients:</h1>
 
-    <table id="book-table" class="table table-bordered table-striped table-hover">
+    <table id="client" class="table table-bordered table-striped table-hover">
      <thead>
      <tr>
         <td>Nom</td>

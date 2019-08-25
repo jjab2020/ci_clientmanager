@@ -1,6 +1,8 @@
 $(document).ready(function() {
-    $('#book-table').DataTable({
-    	"pageLength" : 5,
+    $('#client').DataTable({
+    	"bProcessing": true,
+        "serverSide": true,
+    	"pageLength" : 20,
         "ajax": {
             url : "getclient",
             type : 'GET'
