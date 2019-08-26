@@ -522,5 +522,5 @@ $config['rewrite_short_tags'] = FALSE;
 */
 $config['proxy_ips'] = '';
 
-$config['header_css'] = array('bootstrap.min.css');
+$config['header_css'] = array('bootstrap.min.css','custom.css');
 $config['header_js'] = array('jquery.min.js','popper.min.js','bootstrap.min.js','jquery.dataTables.js','dataTables.bootstrap4.min.js','custom.js');

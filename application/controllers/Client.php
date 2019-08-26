@@ -38,13 +38,25 @@ class Client extends CI_Controller {
 
       foreach($clients->result() as $r) {
 
+        $button='<div class="container">'.
+          '<div class="row justify-content-start">'.    
+          '<div class="col-4">'.
+          anchor("client/update/".$r->idClient,"Update",['class'=>'btn btn-primary']).
+          '</div>'.
+          '<div class="col-6">'.
+          anchor("client/deleteClient/".$r->idClient,"delete",['class'=>'btn btn-primary mybutton']).
+          '</div>'.
+          '</div></div>'
+          ;
+
          $data[] = [
             $r->nomClient,
             $r->prenomClient,
             $r->ageClient,
             $r->courrielClient,
             $r->adresse,
-            $r->nomVille
+            $r->nomVille,
+            $button
         ];
     }
 

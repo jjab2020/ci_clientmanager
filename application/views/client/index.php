@@ -18,6 +18,7 @@
                 <td>Courriel</td>
                 <td>Adresse</td>
                 <td>Ville</td>
+                <td>Actions</td>
             </tr>
         </thead>
         <tbody>
