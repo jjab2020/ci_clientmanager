@@ -82,14 +82,14 @@ public function addClient(){
   $villes=$this->ClientsModel->getVilles();
 
   $this->session->unset_userdata('current_url');
-    $this->session->set_userdata('current_url' , current_url());
+  $this->session->set_userdata('current_url' , current_url());
 
-    if (!$this->session->userdata('nom'))
-      return redirect('login');
+  if (!$this->session->userdata('nom'))
+    return redirect('login');
 
-    $this->load->view('templates/header');
-    $this->load->view('client/addclient',['villes'=>$villes]);
-    $this->load->view('templates/footer');
+  $this->load->view('templates/header');
+  $this->load->view('client/addclient',['villes'=>$villes]);
+  $this->load->view('templates/footer');
 }
 public function addclientr(){
  
