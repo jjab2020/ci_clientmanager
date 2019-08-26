@@ -65,4 +65,8 @@ public function commande()
 {
   echo "Gestion commande ici";
 }
+
+public function addClient(){
+  echo "show client view form";
+}
 }

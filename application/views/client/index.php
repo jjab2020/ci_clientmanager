@@ -3,6 +3,10 @@
 </div>
 <div class="container">
  <div class="row">
+     <?php echo anchor("addClient","Ajouter",['class'=>'btn btn-primary']); ?>
+ </div>   
+ <hr>
+ <div class="row">
     <div class="col-md-12">
         <h1>Liste des clients:</h1>
         <table id="client" class="table table-bordered table-striped table-hover">

@@ -1,5 +1,6 @@
 $(document).ready(function() {
     $('#client').DataTable({
+    	"searching": false,
     	"bProcessing": true,
         "serverSide": true,
     	"pageLength" : 20,
@@ -8,4 +9,7 @@ $(document).ready(function() {
             type : 'GET'
         }
     });
+    $(".dataTables_filter").hide();
 });
+
+

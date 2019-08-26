@@ -10,6 +10,7 @@ $route['check'] = 'users/checkLogin';
 $route['dashboard'] = 'dashboard/index';
 $route['client'] = 'client/index';
 $route['getclient'] = 'client/getClient';
+$route['addClient'] = 'client/addClient';
 $route['commande'] = 'client/commande';
 $route['about'] = 'users/about';
 $route['acceuil'] = 'users/acceuil';
