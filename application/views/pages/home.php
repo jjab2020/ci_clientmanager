@@ -12,7 +12,9 @@
 </div>
 
 <div class="col-lg-4">
-  <?php echo anchor("login","S'authentifier",['class'=>'btn btn-primary']); ?>
+  <?php if(!$this->session->userdata('nom')):?> 
+  	<?php echo anchor("login","S'authentifier",['class'=>'btn btn-primary']); ?>
+  <?php endif;?>
 </div>
 
 </div>

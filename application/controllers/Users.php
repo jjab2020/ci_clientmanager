@@ -55,8 +55,10 @@ class Users extends CI_Controller {
 	}
 
 	public function userLogin(){
+
 		if ($this->session->userdata('nom'))
-			return redirect('dashboard');
+			return redirect($this->session->userdata('current_url'));
+
 
 		$this->load->view('templates/header');
 		$this->load->view('users/login');
@@ -85,11 +87,13 @@ class Users extends CI_Controller {
 					'nom' => $userExist[0]->nom,
 					'email'=> $userExist[0]->email,
 					'motdepasse'=> $userExist[0]->motdepasse
+					
 
 				];
 
 				$this->session->set_userdata($sessionData);
 				return redirect("dashboard");
+				
 
 			}		
 			else{
@@ -111,4 +115,21 @@ class Users extends CI_Controller {
 		$this->session->unset_userdata($array_items);
 		return redirect('login');
 	}
+
+	public function about(){
+		$this->session->unset_userdata('current_url');
+        $this->session->set_userdata('current_url' , current_url());
+		$this->load->view('templates/header');
+		$this->load->view('pages/about');
+		$this->load->view('templates/footer');
+	}
+	public function acceuil(){
+		$data['title']=ucfirst('home');
+		$this->session->unset_userdata('current_url');
+        $this->session->set_userdata('current_url' , current_url());
+		$this->load->view('templates/header');
+		$this->load->view('pages/home',$data);
+		$this->load->view('templates/footer');
+	}
+	
 }
