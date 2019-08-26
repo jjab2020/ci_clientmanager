@@ -20,4 +20,9 @@ class ClientsModel extends CI_Model
 		return 0;
 	}
 
+	public function getVilles(){
+		return $this->db->get('ville')->result();	
+
+	}
+
 }
