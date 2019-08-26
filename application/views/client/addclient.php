@@ -105,7 +105,7 @@
 					<?php foreach($villes as $ville):?>
 					<?php $options[$ville->idVille] = $ville->nomVille;?>
 					<?php endforeach;?>
-					<?php echo form_dropdown('idVille', $options, set_value('test'));?>
+					<?php echo form_dropdown('idVille', $options, set_value('idVille'));?>
 				</div>
 			</div>
 		</div>
