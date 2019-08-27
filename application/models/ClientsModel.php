@@ -14,10 +14,7 @@ class ClientsModel extends CI_Model
 
 	public function get_total_clients()
 	{
-		$query = $this->db->select("COUNT(*) as num")->get("client");
-		$result = $query->row();
-		if(isset($result)) return $query->num_rows();
-		return 0;
+		return $this->db->count_all_results('client'); 
 	}
 
 	public function getVilles(){

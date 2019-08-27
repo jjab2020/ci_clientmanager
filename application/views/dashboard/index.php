@@ -7,5 +7,5 @@
 	<br>
 	
 	<?php echo anchor("client","Clients",['class'=>'btn btn-primary']); ?>
-	<?php echo anchor("commande","Commandes",['class'=>'btn btn-primary']); ?>
+	<?php echo anchor("produit","Produits",['class'=>'btn btn-primary']); ?>
 </div>

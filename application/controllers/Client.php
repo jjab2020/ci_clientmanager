@@ -7,6 +7,7 @@ class Client extends CI_Controller {
 
     Parent::__construct();
     $this->load->model("ClientsModel");
+    $this->load->model("Produit");
 
   }
 
@@ -72,9 +73,66 @@ class Client extends CI_Controller {
 
  }
 
- public function commande()
+ public function produit()
  {
-  echo "Gestion commande ici";
+  $categories = $this->Produit->get_categories();
+  
+  $columnProduct = [0=>'Catégorie',1=>'Prix', 2=>'Quantité'];
+
+  $catList = data_list($categories,'idCategorie','nomCategorie');
+  
+  $this->session->unset_userdata('current_url');
+  $this->session->set_userdata('current_url' , current_url());
+
+  if (!$this->session->userdata('nom'))
+    return redirect('login');
+
+  $this->load->view('templates/header');
+  $this->load->view('client/produit',['cat_list'=> $catList ,'products'=> $columnProduct]);
+  $this->load->view('templates/footer');
+}
+
+public function getProduct()
+ {
+  // Datatables Variables
+
+    $draw = intval($this->input->post("draw"));
+    $start = intval($this->input->post("start"));
+    $length = intval($this->input->post("length"));
+
+          // get the  dataset 
+    $produits = $this->Produit->get_produit($start, $length);
+
+
+
+    $data = [] ;
+
+    foreach($produits->result() as $r) {
+
+      $data[] = [
+        $r->codeArticle,
+        $r->description,
+        $r->prix,
+        $r->quantite,
+        $r->nomCategorie
+      ];
+    }
+   /*  pretty_dump( $data);
+    exit();*/
+
+    $total_produit = $this->Produit->get_total_produit();
+
+   /* pretty_dump($total_produit, true);
+    exit();*/
+
+    $output = [
+     "draw" => $draw,
+     "recordsTotal" => $total_produit,
+     "recordsFiltered" =>$total_produit,
+     "data" => $data
+   ];
+
+   echo json_encode($output);
 }
 
 public function addClient(){

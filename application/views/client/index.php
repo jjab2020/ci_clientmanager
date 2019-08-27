@@ -8,7 +8,7 @@
  <hr>
  <div class="row">
     <div class="col-md-12">
-        <h1>Liste des clients:</h1>
+        <h1>Liste des Clients:</h1>
         <table id="client" class="table table-bordered table-striped table-hover">
          <thead>
              <tr>
