@@ -30,7 +30,7 @@
                         <label for="LastName" class="col-sm-2 control-label">En ordre:</label>
                         <div class="col-sm-4">
                             <div class="custom-control custom-radio custom-control-inline">
-                              <input type="radio" class="custom-control-input" id="defaultInline1" name="inlineDefaultRadiosExample">
+                              <input type="radio" class="custom-control-input" id="defaultInline1" name="inlineDefaultRadiosExample" checked >
                               <label class="custom-control-label" for="defaultInline1">Croissant</label>
                             </div>
                             <!-- Default inline 3-->
