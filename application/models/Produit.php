@@ -35,4 +35,38 @@ class Produit extends CI_Model
 		$query = $this->db->get();
         return $query>num_rows();
     }
+
+    function getSearchedProduct($start,$length,$search)
+    {
+        if(isset($search)){
+            $query = $this
+                ->db
+                ->where('prix',trim($search))
+                ->or_like('codeArticle',trim($search))
+                ->limit($length,$start);
+        return $query->get('produit');  
+       
+        /*if($query->num_rows()>0)
+        {
+            
+        }
+        else
+        {
+            return null;
+        }*/
+        }
+    	
+    }
+    function productSearchCount($search,$start,$length)
+    {
+        $query = $this
+                ->db
+                ->where('prix',$search)
+                ->or_like('codeArticle',$search)
+                ->limit($length,$start)
+                ->get('produit');
+    
+        return $query->num_rows();
+    } 
+
 }

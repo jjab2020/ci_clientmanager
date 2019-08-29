@@ -99,12 +99,25 @@ public function getProduct()
     $draw = intval($this->input->post("draw"));
     $start = intval($this->input->post("start"));
     $length = intval($this->input->post("length"));
+    $search = $this->input->post('search')['value'];//$_POST['search']['value'];//
+    $keySearch = $this->input->post("cle");
+    $cat = $this->input->post("categ");
+    $sort = $this->input->post("sort");
+    $asc = $this->input->post("asc");
+    $desc = $this->input->post("desc");
 
-          // get the  dataset 
-    $produits = $this->Produit->get_produit($start, $length);
+    
 
 
+    if(!isset($search) && empty($search)){
+      $produits = $this->Produit->get_produit($start, $length);
+      }
+      else{
 
+        $produits = $this->Produit->getSearchedProduct($start, $length,$search); 
+      }
+
+   
     $data = [] ;
 
     foreach($produits->result() as $r) {
@@ -113,22 +126,19 @@ public function getProduct()
         $r->codeArticle,
         $r->description,
         $r->prix,
-        $r->quantite,
-        $r->nomCategorie
+        $r->quantite
+        //$r->nomCategorie
       ];
     }
-   /*  pretty_dump( $data);
-    exit();*/
-
+   
     $total_produit = $this->Produit->get_total_produit();
+    $searched_produit = $this->Produit->productSearchCount($search,$start, $length);
 
-   /* pretty_dump($total_produit, true);
-    exit();*/
-
+   
     $output = [
      "draw" => $draw,
      "recordsTotal" => $total_produit,
-     "recordsFiltered" =>$total_produit,
+     "recordsFiltered" =>$searched_produit,
      "data" => $data
    ];
 

@@ -11,7 +11,7 @@
                     <div class="form-group">
                         <label for="search" class="col-sm-2 control-label">Mot clé:</label>
                         <div class="col-sm-4">
-                          <?php echo form_input(['name'=>'search','class'=>'form-control','placeholder'=>'Mot clé','value'=>set_value('search')]);     ?>
+                          <?php echo form_input(['name'=>'search','id'=>'searchpr','class'=>'form-control','placeholder'=>'Mot clé','value'=>set_value('search')]);     ?>
                         </div>
                     </div>
                     <div class="form-group">
@@ -30,13 +30,13 @@
                         <label for="LastName" class="col-sm-2 control-label">En ordre:</label>
                         <div class="col-sm-4">
                             <div class="custom-control custom-radio custom-control-inline">
-                              <input type="radio" class="custom-control-input" id="defaultInline1" name="inlineDefaultRadiosExample" checked >
-                              <label class="custom-control-label" for="defaultInline1">Croissant</label>
+                              <input type="radio" class="custom-control-input" id="ascpr" name="asc" >
+                              <label class="custom-control-label" for="asc">Croissant</label>
                             </div>
                             <!-- Default inline 3-->
                             <div class="custom-control custom-radio custom-control-inline">
-                              <input type="radio" class="custom-control-input" id="defaultInline3" name="inlineDefaultRadiosExample">
-                              <label class="custom-control-label" for="defaultInline3">Décroissant</label>
+                              <input type="radio" class="custom-control-input" id="descpr" name="desc">
+                              <label class="custom-control-label" for="desc">Décroissant</label>
                             </div>
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                     <th>Description</th>
                     <th>Prix</th>
                     <th>Quantité</th>
-                    <th>Catégorie</th>
+                    
                 </tr>
             </thead>
             <tbody>

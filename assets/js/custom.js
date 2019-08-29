@@ -25,18 +25,19 @@ $(document).ready(function() {
             "url": "listsproduit",
             "type": "POST",
             "data": function ( data ) {
-                /*data.country = $('#country').val();
-                data.FirstName = $('#FirstName').val();
-                data.LastName = $('#LastName').val();
-                data.address = $('#address').val();*/
+                data.cle = $('#searchpr').val();
+                data.categ = $('#categ').val();
+                data.sort = $('#sortpr').val();
+                data.asc = $('#ascpr').val();
+                data.desc = $('#descpr').val();
             }
         },
  
         //Set column definition initialisation properties.
         "columnDefs": [
         { 
-            "targets": [ 0 ], //first column / numbering column
-            "orderable": false, //set not orderable
+            //"targets": [ 0 ], //first column / numbering column
+            //"orderable": false, //set not orderable
         },
         ],
  
