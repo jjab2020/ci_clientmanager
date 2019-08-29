@@ -62,12 +62,12 @@ if(!function_exists('put_headers')){
         }
         if(count($header_js)!=0){
             foreach($header_js AS $item){
-               $str .= '<script type="text/javascript" src="'.base_url().'assets/js/'.$item.'"></script>'."\n";
-        }
-        }
-        
-        return $str;
-    }
+             $str .= '<script type="text/javascript" src="'.base_url().'assets/js/'.$item.'"></script>'."\n";
+         }
+     }
+
+     return $str;
+ }
 }
 
 if (!function_exists('pretty_dump')) {
@@ -83,20 +83,21 @@ if (!function_exists('pretty_dump')) {
             echo "<pre>", var_dump($input) , "</pre>";
         }
     }
-    }
+}
 
 
-    if (!function_exists('data_list')) {
+if (!function_exists('data_list')) {
     /**
      * @param array|object $input
      * @param bool $export
      */
-    function data_list($data,$id,$val)
+    function data_list($data,$id,$val,$label="")
     {
-        $output=[];
-       foreach ($data as $record) {
+        if(!empty($label))  $output = array('' => $label) ;
+        
+        foreach ($data as $record) {
             $output[$record[$id]]=$record[$val];
         }
         return $output;    
     }
-    }
+}

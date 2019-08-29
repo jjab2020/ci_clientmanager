@@ -99,22 +99,17 @@ public function getProduct()
     $draw = intval($this->input->post("draw"));
     $start = intval($this->input->post("start"));
     $length = intval($this->input->post("length"));
-    $search = $this->input->post('search')['value'];//$_POST['search']['value'];//
+    $search = $this->input->post('search')['value'];
     $keySearch = $this->input->post("cle");
-    $cat = $this->input->post("categ");
-    $sort = $this->input->post("sort");
-    $asc = $this->input->post("asc");
-    $desc = $this->input->post("desc");
+    $cat = intval($this->input->post("categ"));
+    $sort = intval($this->input->post("sort"));
+    $direction = $this->input->post("direction");
 
-    
-
-
-    if(!isset($search) && empty($search)){
+    if(empty($keySearch)){
       $produits = $this->Produit->get_produit($start, $length);
       }
       else{
-
-        $produits = $this->Produit->getSearchedProduct($start, $length,$search); 
+        $produits = $this->Produit->getSearchedProduct($start, $length,$keySearch,$cat,$sort,$direction); 
       }
 
    
@@ -132,7 +127,11 @@ public function getProduct()
     }
    
     $total_produit = $this->Produit->get_total_produit();
-    $searched_produit = $this->Produit->productSearchCount($search,$start, $length);
+    $searched_produit = $this->Produit->productSearchCount($keySearch,$start, $length,$cat,$sort,$direction);
+
+    if(empty($keySearch)){
+      $searched_produit = $total_produit;
+      }
 
    
     $output = [
@@ -147,7 +146,9 @@ public function getProduct()
 
 public function addClient(){
 
-  $villes=$this->ClientsModel->getVilles();
+  $villes = $this->ClientsModel->getVilles();
+  $ville_drop_down= data_list($villes,'idVille','nomVille','Choisir une ville ..');
+
 
   $this->session->unset_userdata('current_url');
   $this->session->set_userdata('current_url' , current_url());
@@ -156,7 +157,7 @@ public function addClient(){
     return redirect('login');
 
   $this->load->view('templates/header');
-  $this->load->view('client/addclient',['villes'=>$villes]);
+  $this->load->view('client/addclient',['villes'=>$ville_drop_down]);
   $this->load->view('templates/footer');
 }
 public function addclientr(){

@@ -9,7 +9,7 @@ $(document).ready(function() {
             type : 'GET'
         }
     });
-    $(".dataTables_filter").hide();
+    
 
 
     //datatables
@@ -28,16 +28,17 @@ $(document).ready(function() {
                 data.cle = $('#searchpr').val();
                 data.categ = $('#categ').val();
                 data.sort = $('#sortpr').val();
-                data.asc = $('#ascpr').val();
-                data.desc = $('#descpr').val();
+                data.direction = $("input[name='sortp']:checked").val();
+
+
             }
         },
  
         //Set column definition initialisation properties.
         "columnDefs": [
         { 
-            //"targets": [ 0 ], //first column / numbering column
-            //"orderable": false, //set not orderable
+            "targets": [ 0,1,2,3], //first column / numbering column
+            "orderable": false, //set not orderable
         },
         ],
  
@@ -47,9 +48,14 @@ $(document).ready(function() {
         table.ajax.reload();  //just reload table
     });
     $('#btn-reset').click(function(){ //button reset event click
-        $('#form-filter')[0].reset();
+        $('#searchpr').val('');
         table.ajax.reload();  //just reload table
     });
+
+    $(".dataTables_filter").hide();
+     $(".dataTables_info").hide();
+    
+
 });
 
 

@@ -101,11 +101,7 @@
 					Ville Client
 				</label>
 				<div class="col-md-9">
-					<?php $options = array('' => 'Choisir Ville ...'); ?>
-					<?php foreach($villes as $ville):?>
-					<?php $options[$ville->idVille] = $ville->nomVille;?>
-					<?php endforeach;?>
-					<?php echo form_dropdown('idVille', $options, set_value('idVille'),['class'=>'form-control','id'=>'ville']);?>
+					<?php echo form_dropdown('idVille', $villes, set_value('idVille'),['class'=>'form-control','id'=>'ville']);?>
 				</div>
 			</div>
 		</div>

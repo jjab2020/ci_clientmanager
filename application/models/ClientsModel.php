@@ -18,7 +18,7 @@ class ClientsModel extends CI_Model
 	}
 
 	public function getVilles(){
-		return $this->db->get('ville')->result();	
+		return $this->db->get('ville')->result_array();	
 
 	}
 
