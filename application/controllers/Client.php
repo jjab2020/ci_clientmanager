@@ -8,6 +8,7 @@ class Client extends CI_Controller {
     Parent::__construct();
     $this->load->model("ClientsModel");
     $this->load->model("Produit");
+     $this->load->library('pdf');
 
   }
 

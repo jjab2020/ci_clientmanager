@@ -8,7 +8,7 @@
 <div class="row">
 
  <div class="col-lg-4">
-  <?php echo anchor("register","S'inscrire",['class'=>'btn btn-primary']); ?>
+  <?php echo anchor("register","<i class='fas fa-plus-square'></i>S'inscrire",['class'=>'btn btn-primary']); ?>
 </div>
 
 <div class="col-lg-4">

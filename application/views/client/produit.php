@@ -44,8 +44,8 @@
   <div class="form-group">
     <label for="LastName" class="col-sm-2 control-label"></label>
     <div class="col-sm-4">
-        <button type="button"  id="btn-filter"  class="btn btn-primary">Rechercher</button>
-        <button type="button" id="btn-reset" class="btn btn-default">Effacer</button>
+        <button type="button"  id="btn-filter"  class="btn btn-primary"><i class="fas fa-search-plus"></i> Rechercher</button>
+        <button type="button" id="btn-reset" class="btn btn-danger"><i class="far fa-trash-alt"></i> Effacer</button>
     </div>
 </div>
 <?php echo form_close(); ?>

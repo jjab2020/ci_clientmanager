@@ -61,7 +61,7 @@
 		</div>
 
 	</div>
-	<button type="submit"	 class="btn btn-primary">S'enregistrer</button>
+	<button type="submit"	 class="btn btn-primary"><i class="fas fa-user-plus"></i> S'enregistrer</button>
 	<?php echo anchor("/","Précédent",['class'=>'btn btn-primary']); ?>
 	
 	<?php echo form_close(); ?>
