@@ -1,0 +1,145 @@
+https://medium.com/@onlineinerview/creating-restful-service-in-codeigniter-3be674a03676
+https://github.com/Musthofamisbah10/SIA_ci
+https://github.com/jhasaren/freya-trucks
+https://github.com/Scarface34/codeigniter-admin-panel
+https://github.com/jmr85/login-usuario
+https://github.com/zidanlastone/zishop
+https://github.com/AlfaRiza/toko-online
+https://github.com/Nareshkumar979/CI-with-Admin-Panel
+https://github.com/jason822/Codeigniter-Air-Flight-Booking
+https://github.com/ilhammfadilah/Codeigniter-Login
+https://github.com/leonardFM/sistem-login-admin-CodeIgniter-
+https://github.com/GaGiiiii/mtrCODEIGNITER
+https://github.com/gowthamand/codeigniter-add-edit-delete-view-login-register
+https://github.com/shakzee/ECommerce-In-Codeigniter-The-Complete-Guide-Step-By-Step-From-Scratch
+https://github.com/fishingboy/Codeigniter-Migration
+https://github.com/fishingboy/Codeigniter-Seeder
+https://github.com/PranavjoshiLB/clinic-management-Codeigniter
+https://github.com/nurrachmat-nr/ci-helper
+https://github.com/aftertheboop/restful-helper-for-codeigniter
+https://github.com/iamRahul1973/helpers
+https://github.com/sarvap-praharanayuthan/CodeIgniter-Handy-Helper-Functions/tree/master/application
+https://github.com/babycodes/CodeIgniter-Simple-FlashMessageHelper
+https://github.com/didikmulyadi/codeigniter_helper
+https://github.com/milindc97/support-codeigniter-library
+https://github.com/oppytut/codegniter-url-encryption
+http://blog.tjsrms.me/%EC%BD%94%EB%93%9C%EC%9D%B4%EA%B7%B8%EB%82%98%EC%9D%B4%ED%84%B0-%EB%A9%80%ED%8B%B0%EA%B2%8C%EC%8B%9C%ED%8C%90-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8-01-%ED%94%84%EB%A1%9C%EC%A0%9D%ED%8A%B8%EC%8B%9C/
+https://codeburst.io/using-vue-js-components-in-php-applications-e5bfde8763bc
+https://github.com/ashikbd/ci_common_helper
+https://github.com/maruisd/ci-fonticons_helper
+https://github.com/ankitcp87/codeigniter-helpers
+https://github.com/himanshuasharma/codeigniter-general-model
+https://github.com/slav123/CodeIgniter-minify
+
+https://mbahcoding.com/tutorial/php/codeigniter/codeigniter-server-side-datatables-custom-filter.html
+https://avenir.ro/codeigniter-tutorials/creating-working-with-my_controller-codeigniter/
+https://github.com/ozanmora/ci_log_query
+https://stackoverflow.com/questions/39587940/logging-all-queries-after-execution-in-codeigniter
+https://avenir.ro/codeigniter-tutorials/no-more-my_controller-how-you-can-create-more-than-one-base-controller/
+https://teamtreehouse.com/community/how-can-i-have-a-super-global-variable-in-codeigniter-which-is-accessible-in-all-my-controllers
+https://arjunphp.com/codeigniter-helper-quick-dynamic-dropdown-select-box/
+
+
+
+public function funcname($id)
+{
+    $this->db->select('*');
+    $this->db->from('Album a'); 
+    $this->db->join('Category b', 'b.cat_id=a.cat_id', 'left');
+    $this->db->join('Soundtrack c', 'c.album_id=a.album_id', 'left');
+    $this->db->where('c.album_id',$id);
+    $this->db->order_by('c.track_title','asc');         
+    $query = $this->db->get(); 
+    if($query->num_rows() != 0)
+    {
+        return $query->result_array();
+    }
+    else
+    {
+        return false;
+    }
+}
+
+$query = $this->db->select('*')
+             ->from('person')
+             ->where('type','staff')
+             ->like('description','university','after')
+             ->get();
+
+$result = $query->result_array();
+
+$this->db->where
+$this->db->like
+
+https://avenir.ro/codeigniter-tutorials/creating-working-with-my_controller-codeigniter/
+https://www.tutsmake.com/select-query-in-codeigniter-with-multiple-clause/
+https://shareurcodes.com/blog/dataTables%20server-side%20processing%20in%20codeigniter
+https://github.com/ashikbd/ci_common_helper
+https://github.com/ozanmora/ci_log_query
+http://blog.naver.com/PostView.nhn?blogId=saikyo4713&logNo=220986076502&parentCategoryNo=&categoryNo=65&viewDate=&isShowPopularPosts=false&from=postView
+http://www.turankaratug.com/blog/codeigniter/23-codeigniter-database-sorgularini-loglama
+https://itsolutionstuff.com/post/codeigniter-3-generate-pdf-from-view-using-dompdf-library-with-exampleexample.html
+http://www.webpreparations.com/generate-pdf-codeigniter-using-mpdf-library/
+
+
+https://arjunphp.com
+
+
+
+key word search: codeigniter admin login
+
+
+
+
+$sql  = "SELECT 
+        a.ar, 
+        a.jabatan, 
+        COUNT(*) AS JumlahWPBaru, 
+        SUM( 
+            CASE WHEN a.no_shim IS NOT NULL 
+            THEN 1 
+            WHEN a.no_shim IS NULL 
+            THEN 0 
+            END ) AS JumlahHimbauan
+        FROM (
+
+        SELECT 
+            a.ar, 
+            c.jabatan, 
+            a.npwp, 
+            a.kpp, 
+            a.cab, 
+            a.namawp, 
+            b.kd_shim, 
+            b.no_shim, 
+            b.tgl_shim
+        FROM mfwpbudi a
+        LEFT JOIN tb_shimbauan b ON ( a.npwp = b.npwp ) 
+        LEFT JOIN easystp_user c ON ( SUBSTR( a.ar, 1, 9 ) = c.id_user ) 
+        WHERE a.tanggal_daftar >  '2013-12-31'
+        AND c.jabatan =  '05E'
+        ) AS a
+        GROUP BY a.ar";
+
+$query = $this->db->query($sql);
+$result = $query->result_array();
+return $result;
+
+
+https://arjunphp.com/how-to-join-tables-in-codeigniter/
+https://arjunphp.com/save-codeigniter-config-data-in-mysql-database/
+https://arjunphp.com/how-to-insert-data-into-database-with-codeigniter/
+https://arjunphp.com/how-to-use-composer-with-codeigniter/
+https://arjunphp.com/codeigniter-helper-quick-dynamic-dropdown-select-box/
+https://arjunphp.com/codeigniter-send-and-retrieve-data-using-flash-messages/
+https://arjunphp.com/base-controller-codeigniter/
+https://teamtreehouse.com/community/how-can-i-have-a-super-global-variable-in-codeigniter-which-is-accessible-in-all-my-controllers
+https://arjunphp.com/php-method-chaining/
+https://arjunphp.com/
+https://www.gyrocode.com/articles/jquery-datatables-how-to-submit-all-pages-form-data/
+https://jsfiddle.net/gyrocode/ak6v0gj2/
+https://datatables.net/examples/api/form.html
+https://medium.com/code-kings/datatables-js-how-to-modify-your-returned-ajax-json-data-before-sending-it-to-your-html-table-24a92244bc40
+https://stackoverflow.com/questions/42917738/get-datatables-cell-value-that-is-input-text-field
+https://arjunphp.com/create-pdf-using-mpdf-codeigniter-3/
+https://kode-blog.io/codeigniter-migration
