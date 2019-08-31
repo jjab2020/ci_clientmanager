@@ -1,101 +1,100 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class commande extends CI_Controller {
+class Commande extends CI_Controller {
 
 	public function __construct() {
 
-    Parent::__construct();
-    $this->load->model("Command");
-    $this->load->library('pdf');
+		Parent::__construct();
 
-  }
-  public function add_command(){
-   $json = json_decode(file_get_contents("php://input"));
-    $categories = $json->articles;
+		//load model
+		$this->load->model("Command");
+		$this->load->model("Facture");
 
-   foreach($categories as $record) {
-      echo $record->quantite;
-    }
-   exit();
+		//load pdf library
+		$this->load->library('pdf');
 
-   /*
-      $input = ['name'=>'Test', 'description'=>'This is Test'];
-      $this->db->insert('items', $input);
-      $insertId = $this->db->insert_id();
-      return  $insertId;
-   */
+	}
+	public function add_command(){
+		
+		$json = json_decode(file_get_contents("php://input"));
+		$articles = $json->articles;
+		$idClient = $json->idClient;
 
-   /*$data = array(
-   array(
-      'title' => 'My title' ,
-      'name' => 'My Name' ,
-      'date' => 'My date'
-   ),
-   array(
-      'title' => 'Another title' ,
-      'name' => 'Another Name' ,
-      'date' => 'Another date'
-   )
-);
+       //add  facture
+		$facture = ['dateFacture'=> date('Y-m-d'), 'idClient'=>$idClient];
+		$idFacture =$this->Facture->addFacture($facture);
 
-  $this->db->insert_batch('mytable', $data); 
-  echo json_encode(array('succes' =>true));*/
-  
-  }
+		foreach($articles as $record) {
+			
+				$lignesFactures[] = array(
+					'idFacture'=> intval($idFacture),
+					'quantiteAchat'=>intval($record->quantite),
+					'codeArticle'=> $record->codearticle
+					);
+		   }
 
-  public function getListOfArticles(){
+		//add ligne facture
+		$addLigneFacture = $this->Facture->addLigneFacture($lignesFactures);
+		if($addLigneFacture){
+		   $response_array['status'] = 'success';  		
+		}
+		else{
+           $response_array['status'] = 'error';
+		}
 
-    // Datatables Variables
-    $draw = intval($this->input->post("draw"));
+		echo json_encode($response_array);
+		exit();
+	}
 
-    //dataset articles
-    $articles = $this->Command->getListOfProductWithquantite();
+	public function getListOfArticles(){
 
-    $data = [] ;
+       // Datatables Variables
+		$draw = intval($this->input->post("draw"));
 
-    /*pretty_dump($articles);
-    exit($articles);*/
+       //dataset articles
+		$articles = $this->Command->getListOfProductWithquantite();
+		$data = [] ;
 
-    foreach($articles as $r) {
+		foreach($articles as $r) {
 
-      $input = form_input('quantite',0,['class'=>'form_control','id'=>'qte']);
+			$input = form_input('quantite',0,['class'=>'form_control','id'=>'qte']);
 
-      $data[] = [
-        $r->codeArticle,
-        $r->description,
-        $r->prix,
-        $r->qte_disp,
-        $input
-      ];
-    }
+			$data[] = [
+				$r->codeArticle,
+				$r->description,
+				$r->prix,
+				$r->qte_disp,
+				$input
+			];
+		}
 
-    $total_articles = count( $articles);
+		$total_articles = count( $articles);
 
-    $output = [
-     "draw" => $draw,
-     "recordsTotal" => $total_articles,
-     "recordsFiltered" => $total_articles,
-     "data" => $data
-   ];
+		$output = [
+			"draw" => $draw,
+			"recordsTotal" => $total_articles,
+			"recordsFiltered" => $total_articles,
+			"data" => $data
+		];
 
-   echo json_encode($output);
-  }
+		echo json_encode($output);
+	}
 
-  public function passCommand(){
-  $nomClient = $this->uri->segment(4);
-  $idClient = $this->uri->segment(3);
+	public function passCommand(){
+		$nomClient = $this->uri->segment(4);
+		$idClient = $this->uri->segment(3);
 
-  
-  $this->session->unset_userdata('current_url');
-  $this->session->set_userdata('current_url' , current_url());
 
-  if (!$this->session->userdata('nom'))
-    return redirect('login');
+		$this->session->unset_userdata('current_url');
+		$this->session->set_userdata('current_url' , current_url());
 
-  $this->load->view('templates/header');
-  $this->load->view('commandes/index',['idClient'=>$idClient,'nomClient'=>$nomClient]);
-  $this->load->view('templates/footer');
-}
+		if (!$this->session->userdata('nom'))
+			return redirect('login');
+
+		$this->load->view('templates/header');
+		$this->load->view('commandes/index',['idClient'=>$idClient,'nomClient'=>$nomClient]);
+		$this->load->view('templates/footer');
+	}
 
 }
