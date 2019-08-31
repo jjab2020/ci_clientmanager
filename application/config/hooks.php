@@ -12,9 +12,9 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 |
 */
 
-$hook['post_controller'][] = array(
+/*$hook['post_controller'][] = array(
     'class' => 'Log_Query', 
     'function' => 'run',
     'filename' => 'Log_query.php',
     'filepath' => 'hooks'
-);
+);*/

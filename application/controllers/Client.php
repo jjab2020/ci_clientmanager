@@ -8,7 +8,6 @@ class Client extends CI_Controller {
     Parent::__construct();
     $this->load->model("ClientsModel");
     $this->load->model("Produit");
-     $this->load->library('pdf');
 
   }
 
@@ -46,7 +45,7 @@ class Client extends CI_Controller {
       anchor("client/update/".$r->idClient,"Update",['class'=>'btn btn-primary']).
       '</div>'.
       '<div class="col-6">'.
-      anchor("client/deleteClient/".$r->idClient,"delete",['class'=>'btn btn-primary mybutton']).
+      anchor("commande/passCommand/".$r->idClient."/".$r->prenomClient,"Commander",['class'=>'btn btn-primary mybutton']).
       '</div>'.
       '</div></div>';
 
@@ -161,7 +160,9 @@ public function addClient(){
   $this->load->view('client/addclient',['villes'=>$ville_drop_down]);
   $this->load->view('templates/footer');
 }
+/*todo*/
 public function addclientr(){
  
 }
+
 }
