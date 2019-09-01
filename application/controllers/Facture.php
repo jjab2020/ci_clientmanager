@@ -59,7 +59,7 @@ class Facture extends CI_Controller {
 			return redirect('login');
 
 		$data = $this->input->post();	
-        
+		
         //todo get client with facture with items
 
 		$html = $this->load->view('facture/facturepdf',$data,true);
