@@ -4,6 +4,9 @@
 <input type="hidden" id="idClient" name="idClient" value="<?php echo $idClient?>"/>
 <div class="container-fluid">
 	<div class="row">
+		<div id="result"></div>
+	</div>
+	<div class="row">
 		<div class="col-md-12">
 			<h4>Passer une commande pour le client: <?php echo $nomClient ?></h4>
 			<hr>

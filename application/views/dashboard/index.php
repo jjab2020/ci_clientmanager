@@ -8,4 +8,5 @@
 	
 	<?php echo anchor("client","Clients",['class'=>'btn btn-primary']); ?>
 	<?php echo anchor("produit","Produits",['class'=>'btn btn-primary']); ?>
+	<?php echo anchor("facture","Factures",['class'=>'btn btn-primary']); ?>
 </div>

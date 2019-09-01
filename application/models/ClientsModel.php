@@ -22,4 +22,11 @@ class ClientsModel extends CI_Model
 
 	}
 
+	public function getAllClient()
+	{
+		$this->db->select('c.idClient,CONCAT(c.prenomClient,"-",c.nomClient) nomClient');
+		$this->db->from('client c');
+		$this->db->join('ville v', 'v.idVille = c.idVille');
+		return $this->db->get()->result_array();
+	}
 }

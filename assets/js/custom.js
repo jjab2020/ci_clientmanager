@@ -78,17 +78,47 @@ $(document).ready(function() {
           data: JSON.stringify({ 'articles': result,'idClient':$('#idClient').val()}),
           type : 'POST',
           success: function(response){
-            console.log($.parseJSON(response));
-            if(response.status == 'success'){
-               console.log("commande passé");
+            var data = $.parseJSON(response);
+            if(data.status == 'success'){
                cmdTable.ajax.reload();  //just reload table
                $('input').val('');//empty input
+               //show success
+               $("#result").html('<div class="alert alert-success"><button type="button" class="close">×</button>Commande passé avec succée!</div>');
+               window.setTimeout(function() {
+                $(".alert").fadeTo(500, 0).slideUp(500, function(){
+                    $(this).remove(); 
+                });
+                }, 5000);
+            $('.alert .close').on("click", function(e){
+                $(this).parent().fadeTo(500, 0).slideUp(500);
+             });
             }
-            else if(response.status == 'error'){
-               console.log("erreur passage commande");     
+            else if(data.status == 'error'){
+              
             }
         }
     });
+    });
+
+     //dropdown client
+
+     $('#dropdclient').on('change',function(){
+        $.ajax({
+            url: 'facturebyclient',
+            type: "POST",
+            data: { idClient: $(this).val()} ,
+         }).done(function(data) {
+            var result = $.parseJSON(data);
+            $('#facture').append('<option value="">Veuillez choisir une facture</option>');
+            $.each(result, function(index, value) {
+               $('#facture').append('<option value='+index+'>'+'Facture en date de: ' + value +'</option>');
+            });
+            
+         }).fail(function() {
+            
+         }).always(function() {
+         
+        });
     });
 
      $('#btn-clear-command').click(function(){ 

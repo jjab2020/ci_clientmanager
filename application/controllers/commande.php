@@ -9,10 +9,7 @@ class Commande extends CI_Controller {
 
 		//load model
 		$this->load->model("Command");
-		$this->load->model("Facture");
-
-		//load pdf library
-		$this->load->library('pdf');
+		$this->load->model("Factures");
 
 	}
 	public function add_command(){
@@ -23,7 +20,7 @@ class Commande extends CI_Controller {
 
        //add  facture
 		$facture = ['dateFacture'=> date('Y-m-d'), 'idClient'=>$idClient];
-		$idFacture =$this->Facture->addFacture($facture);
+		$idFacture =$this->Factures->addFacture($facture);
 
 		foreach($articles as $record) {
 			
@@ -35,7 +32,7 @@ class Commande extends CI_Controller {
 		   }
 
 		//add ligne facture
-		$addLigneFacture = $this->Facture->addLigneFacture($lignesFactures);
+		$addLigneFacture = $this->Factures->addLigneFacture($lignesFactures);
 		if($addLigneFacture){
 		   $response_array['status'] = 'success';  		
 		}
